@@ -21,9 +21,7 @@ const professorSchema = new mongoose.Schema({
 
 const Professor = mongoose.model("Professor", professorSchema);
 
-// Endpoints
 
-// GET alle Professoren
 app.get("/profs", async (req, res) => {
   try {
     const professors = await Professor.find();
@@ -33,12 +31,11 @@ app.get("/profs", async (req, res) => {
   }
 });
 
-// GET Professor nach ID
 app.get("/profs/:id", getProfessor, (req, res) => {
   res.json(res.professor);
 });
 
-// POST neuer Professor
+
 app.post("/profs", async (req, res) => {
   const professor = new Professor({
     name: req.body.name,
@@ -53,7 +50,7 @@ app.post("/profs", async (req, res) => {
   }
 });
 
-// PUT (Aktualisierung) eines Professors
+
 app.put("/profs/:id", getProfessor, async (req, res) => {
   if (req.body.name != null) {
     res.professor.name = req.body.name;
@@ -70,7 +67,7 @@ app.put("/profs/:id", getProfessor, async (req, res) => {
   }
 });
 
-// DELETE eines Professors
+
 app.delete("/profs/:id", getProfessor, async (req, res) => {
   try {
     await res.professor.remove();
