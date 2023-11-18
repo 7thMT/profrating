@@ -4,11 +4,10 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const port = 8080;
 
-// Middleware
 app.use(express.json());
 app.use(cors());
 
-// MongoDB Verbindung
+
 mongoose.connect("mongodb://localhost:27017/", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
